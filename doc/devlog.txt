@@ -1,0 +1,3 @@
+chenA -- 21:57\n
+Created repository and created doc folder
+Added design.pdf and devlog.txt to doc folder
