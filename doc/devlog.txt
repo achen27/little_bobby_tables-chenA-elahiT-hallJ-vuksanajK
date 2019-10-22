@@ -50,3 +50,12 @@ What we can do:
                 what needs to be done foe this project
 -USING COMMENTS: adding comments to the code would make it easier for the other
                 team members to understand each others code
+
+kiranV - 2019-10-22 05:22
+SQLITE Cross Join: As opposed to the other forms of join which have conditions on which the two tables are joined, CROSS JOIN outputs a result joining each element of one table with each element of the next table, for every possible combination.
+If the lengths of the two tables are size m and n, the CROSS JOIN output will have (m*n) results.
+None of our tables immediately lend themselves to such a form of joining, but if a feature such as, perhaps, 'view count by user' were to be added, a cross between users and stories would serve the purpose well.
+design.pdf
+Slight modifications to caption text
+Description of full project idea added
+Clarification of text inside sitemap
