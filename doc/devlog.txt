@@ -1,3 +1,10 @@
-chenA -- 21:57\n
+chenA -- 2019-10-20 21:57
 Created repository and created doc folder
 Added design.pdf and devlog.txt to doc folder
+
+chenA -- 2019-10-21 22:42
+Updated design doc
+Added roster to heading
+Addes missing database table
+Fixed site component diagram for clarity
+Added components map to further show connection between front end and back end
