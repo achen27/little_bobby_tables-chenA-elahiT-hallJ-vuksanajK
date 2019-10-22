@@ -15,6 +15,29 @@ The INNER JOIN clause in SQLITE is used to query two or more tables that share
 the same column. If the values in the columns are the same, then a new set is
 created with the selected columns to join on the outside and the same column in
 between, hence the name INNER JOIN.
+
 This can be helpful in our project to link our different tables in out database.
 We can use INNER JOIN to create a set of rows that contains edits for a
 particular story. This would help with out modify stories method.
+
+chenA -- 2019-10-21 23:24
+Programming Sucks
+The article was an interesting read about why programming sucks. It sheds light
+on the idea that programming teams, in all honesty, should not work out but
+somehow manage to create all the software and websites we use every day.
+Somehow, teams composed of all types of people that do not work well together
+managed to create a workable product. Moreover, it describes how through the
+process of writing a program, your initial “good code” will become messier and
+messier as you figure out what your suppose to be writing, adding all sorts of
+components, and merging code with others. It goes on to give examples of how
+everything you’ve created can just break one day because of the work of one
+person who changed a little thing and that the internet is a mess of bad code
+with people barely keeping everything up and running.
+
+What we can do:
+-COMMUNICATION: a constant stream of updates, reminders, can clarification would
+                create less problems throughout the course of the project.
+-SETTING GOALS: having small goals to reach would make it easier to figure out
+                what needs to be done foe this project
+-USING COMMENTS: adding comments to the code would make it easier for the other
+                team members to understand each others code
