@@ -1,18 +1,22 @@
-<!DOCTYPE HTML>
+{% extends "parent.html" %}
 
-<html>
-  <head> </head>
-  <body>
-    <h1>{{ team }}</h1>
-    <h2>{{ rost }}</h2>
-    <form action = "/auth">
-      Username<br>
-      <input type = "text" name = "username">
-      <br>
-      Password<br>
-      <input type = "text" name = "password">
-      <br>
-      <input type = "submit" name = "sub1">
-    </form>
-  </body>
-</html>
+{% block title %}
+  Welcome
+{% endblock %}
+
+{% block pagename %}
+  Welcome
+{% endblock %}
+
+{% block message %}
+  <p> Welcome! Please log in. </p>
+{% endblock %}
+
+{% block content %}
+  <form action = "/join">
+    <input type = "submit" name = "join" value = "Sign Up"> {# to welcome page #}
+  </form>
+  <form action = "/login">
+    <input type = "submit" name = "login" value = "Sign In"> {# to welcome page #}
+  </form>
+{% endblock %}

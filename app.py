@@ -1,14 +1,16 @@
-# Amanda Chen
-# SoftDev1 pd1
-# K<n> -- <Title/Topic/Summary>
-# <yyyy>-<mm>-<dd>
+# Team Robert’); DROP TABLE S\*;-- (a.k.a little_bobby_tables)
+#       Amanda Chen (PM), Jesse Hall, Kiran Vuksanaj, Tanzim Elahi
+# SoftDev1 Pd1
+# P00 -- Da Art of Storytellin' (Part X)
+# 2019-10-17
+
 
 from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 
-name =
-roster =
+name = "Storybuilder"
+roster = "little_bobby_tables"
 
 @app.route("/")
 def root():

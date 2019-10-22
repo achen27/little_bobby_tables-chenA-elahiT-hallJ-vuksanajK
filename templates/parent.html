@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+  {% block head %}
+  <title> {% block title %} {% endblock %}
+    || little_bobby_tables
+  </title>
+  {% endblock %}
+</head>
+<body>
+  {% block pagename %}
+  <h1>little_bobby_tables</h1>
+  {% endblock %}
+  {% block message %}
+  <p> {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+  </p>
+  {% endblock %}
+  <br>
+  {% block content %}
+  {% endblock %}
+  <br>
+  {% block footer %}
+    Copyright 2019
+    <br>
+    {{ team }} <br> {{ rost }}
+  {% endblock %}
+</body>
