@@ -9,6 +9,15 @@ Addes missing database table
 Fixed site component diagram for clarity
 Added components map to further show connection between front end and back end
 
+elahiT -- 2019-10-21 11:40 PM
+SQLITE JOIN
+Sqlite3 uses various joins to query data between tables:maninly inner join,left join and cross join.
+
+elahiT
+SQLITE Left Join
+The left join is used to query between two tables, the elements in the first table as specified is added to the left while elements matching rows with the left table are added to the right.By using where, we can generate only those elements in the left which fulfill our where criteria.
+This can be helpful to the various tables in our database.
+
 chenA -- 2019-10-21 23:02
 SQLITE INNER JOIN
 The INNER JOIN clause in SQLITE is used to query two or more tables that share
