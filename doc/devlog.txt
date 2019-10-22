@@ -9,7 +9,7 @@ Addes missing database table
 Fixed site component diagram for clarity
 Added components map to further show connection between front end and back end
 
-chenA -- 2019-10-21 22:57
+chenA -- 2019-10-21 23:02
 SQLITE INNER JOIN
 The INNER JOIN clause in SQLITE is used to query two or more tables that share
 the same column. If the values in the columns are the same, then a new set is
