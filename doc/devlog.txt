@@ -8,3 +8,13 @@ Added roster to heading
 Addes missing database table
 Fixed site component diagram for clarity
 Added components map to further show connection between front end and back end
+
+chenA -- 2019-10-21 22:57
+SQLITE INNER JOIN
+The INNER JOIN clause in SQLITE is used to query two or more tables that share
+the same column. If the values in the columns are the same, then a new set is
+created with the selected columns to join on the outside and the same column in
+between, hence the name INNER JOIN.
+This can be helpful in our project to link our different tables in out database.
+We can use INNER JOIN to create a set of rows that contains edits for a
+particular story. This would help with out modify stories method.
