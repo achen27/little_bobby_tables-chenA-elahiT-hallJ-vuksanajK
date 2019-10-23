@@ -70,3 +70,21 @@ amandaC - 2019-10-22 08:38
 Added flask app template
 Create template for all HTML files
 Create welcome page of app
+
+tanzimE 2019-10-23 00:00
+Created beta log in and username funds
+Created databases with the necessary tables
+Made the database update with each username
+
+kiranV - 2019-10-23 06:30
+Rewrote the base level code for account creation
+Restriction account creation to unused usernames
+Created login code
+Set logged in users to redirect away from '/'
+Corrected flash display on root template
+
+kiranV - 2019-10-23 08:35
+???
+
+amandaC - 2019-10-23 10:21
+Changed links on welcome page into buttons and edited welcome message

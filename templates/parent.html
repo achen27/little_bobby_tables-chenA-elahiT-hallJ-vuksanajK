@@ -13,7 +13,7 @@
   {% block message %}
   <p> {% set messages = get_flashed_messages() %}
     {% for message in messages %}
-    {{ message }}
+      {{ message }} <br />
     {% endfor %}
   </p>
   {% endblock %}

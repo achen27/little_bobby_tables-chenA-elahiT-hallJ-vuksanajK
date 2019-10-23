@@ -8,27 +8,13 @@
   Welcome
 {% endblock %}
 
-{% block message %}
-  <p> Welcome! Please sign up or login. </p>
-{% endblock %}
 
 {% block content %}
-  Join us
-  <form action = "/join" method="GET">
-    <p>
-    Create Username:
-    <input type="text"name="new_user"><br>
-    Create Password
-    <input type="text" name="new_password"><br>
-    <input type = "submit"value = "Sign Up"> {# to welcome page #}
-    </p>
+  <p> Welcome! Please create an account or log in. </p>
+  <form action = "/join">
+    <input type = "submit" value = "Create Account">
   </form>
   <form action = "/login">
-    Log in:<br>
-    Username:<br>
-    <input type="text" name="username"><br>
-    Password:<br>
-    <input type="text" name="password"><br>
-    <input type = "submit" name = "login" value = "Sign In"><br> {# to welcome page #}
+    <input type="submit" value ="Login">
   </form>
 {% endblock %}

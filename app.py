@@ -5,7 +5,7 @@
 # 2019-10-17
 
 
-from flask import Flask, render_template, request, redirect, url_for,session
+from flask import Flask, render_template, request, redirect, url_for,session, flash, get_flashed_messages
 import os
 import sqlite3
 #the sqlite part aka db_builder.py
@@ -25,30 +25,78 @@ app = Flask(__name__)
 name = "Storybuilder"
 roster = "little_bobby_tables"
 app.secret_key=os.urandom(32)
-@app.route("/join")
+@app.route("/join",methods=['GET']) # the form to sign up
+def signuppage():
+    return render_template('join.html'); # the method to add account
+@app.route("/join",methods=['POST'])
 def create():
     data="data.db"
     db=sqlite3.connect(data)
     c=db.cursor()
-    username=request.args["new_user"]
+
+    username=request.form["new_user"]
     print(username)
-    password=request.args["new_password"]
-    command="INSERT INTO Accounts VALUES(\"{}\",\"{}\")"
-    c.execute(command.format(username,password))
-    db.commit()
-    db.close()
-    session['username']=username
+    password=request.form["new_password"]
+
+    command = "SELECT count(*) FROM Accounts WHERE username=\"{}\";"
+    countWithUser = c.execute( command.format(username) )
+    data = c.fetchone()[0] # i dont get this line? gonna try and figure it out later
+    print(data)
+    if(data == 0):
+        command="INSERT INTO Accounts VALUES(\"{}\",\"{}\")"
+        c.execute(command.format(username,password))
+
+        db.commit()
+        db.close()
+        flash('You have successfully created your account, and logged in!')
+        session['username']=username
+        return redirect(url_for("mystories"))
+    else:
+        db.commit()
+        db.close()
+        flash('Username is taken. Please try again with another username.')
+        return redirect(url_for("root"))
     return render_template('homepage.html')
 
 
 @app.route("/")
 def root():
     print(app)
+    print(get_flashed_messages())
+    if('username' in session):
+        flash('You are already logged in!')
+        return redirect(url_for("mystories"))
     return render_template('root.html',
                             team = name,
                             rost = roster)
-@app.route("/auth")
+
+@app.route("/login", methods=['GET']) # the form to login
+def loginform():
+    return render_template('login.html')
+
+@app.route("/login", methods=['POST']) # the method to login
 def authenticate():
+    username = request.form['username']
+    password = request.form['password']
+
+    db = sqlite3.connect('data.db')
+    c = db.cursor()
+
+    command = 'select count(*) from Accounts where username="{}" and password="{}"'
+    c.execute(command.format(username,password))
+    result = c.fetchone()[0]
+    print('huh?')
+    if(result == 1): # username and password valid
+        session['username'] = username
+        db.commit()
+        db.close()
+        flash('You have successfully logged in!')
+        return redirect(url_for('mystories'))
+    else:
+        db.commit()
+        db.close()
+        flash('Incorrect username or password.')
+        return redirect(url_for('root'))
     return render_template('out.html',
                             team = name,
                             rost = roster,
@@ -56,9 +104,18 @@ def authenticate():
                             arg_method = str(request.method))
 
 
+
+
 @app.route("/error")
 def err():
     return "blaaa"
+
+
+@app.route("/mystories")
+def mystories():
+    # this is super temporary! if someone else changes this pls update the redirect in create() tho
+    return render_template('homepage.html')
+
 
 if __name__ == "__main__":
     app.debug = True
