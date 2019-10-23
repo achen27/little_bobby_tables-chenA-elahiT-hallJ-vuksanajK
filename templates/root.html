@@ -9,14 +9,26 @@
 {% endblock %}
 
 {% block message %}
-  <p> Welcome! Please log in. </p>
+  <p> Welcome! Please sign up or login. </p>
 {% endblock %}
 
 {% block content %}
-  <form action = "/join">
-    <input type = "submit" name = "join" value = "Sign Up"> {# to welcome page #}
+  Join us
+  <form action = "/join" method="GET">
+    <p>
+    Create Username:
+    <input type="text"name="new_user"><br>
+    Create Password
+    <input type="text" name="new_password"><br>
+    <input type = "submit"value = "Sign Up"> {# to welcome page #}
+    </p>
   </form>
   <form action = "/login">
-    <input type = "submit" name = "login" value = "Sign In"> {# to welcome page #}
+    Log in:<br>
+    Username:<br>
+    <input type="text" name="username"><br>
+    Password:<br>
+    <input type="text" name="password"><br>
+    <input type = "submit" name = "login" value = "Sign In"><br> {# to welcome page #}
   </form>
 {% endblock %}
