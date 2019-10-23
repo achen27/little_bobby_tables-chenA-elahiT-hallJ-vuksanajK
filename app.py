@@ -25,15 +25,18 @@ app = Flask(__name__)
 name = "Storybuilder"
 roster = "little_bobby_tables"
 app.secret_key=os.urandom(32)
-@app.route("/join")
+@app.route("/join",methods=['GET']) # the form to sign up
+def signuppage():
+    return render_template('join.html'); # the method to add account
+@app.route("/join",methods=['POST'])
 def create():
     data="data.db"
     db=sqlite3.connect(data)
     c=db.cursor()
 
-    username=request.args["new_user"]
+    username=request.form["new_user"]
     print(username)
-    password=request.args["new_password"]
+    password=request.form["new_password"]
 
     command = "SELECT count(*) FROM Accounts WHERE username=\"{}\";"
     countWithUser = c.execute( command.format(username) )
@@ -45,7 +48,7 @@ def create():
 
         db.commit()
         db.close()
-        flash('You have successfully logged in!')
+        flash('You have successfully created your account, and logged in!')
         session['username']=username
         return redirect(url_for("mystories"))
     else:
@@ -66,10 +69,15 @@ def root():
     return render_template('root.html',
                             team = name,
                             rost = roster)
-@app.route("/login")
+
+@app.route("/login", methods=['GET']) # the form to login
+def loginform():
+    return render_template('login.html')
+
+@app.route("/login", methods=['POST']) # the method to login
 def authenticate():
-    username = request.args['username']
-    password = request.args['password']
+    username = request.form['username']
+    password = request.form['password']
 
     db = sqlite3.connect('data.db')
     c = db.cursor()
@@ -96,6 +104,8 @@ def authenticate():
                             arg_method = str(request.method))
 
 
+
+
 @app.route("/error")
 def err():
     return "blaaa"
@@ -104,7 +114,7 @@ def err():
 @app.route("/mystories")
 def mystories():
     # this is super temporary! if someone else changes this pls update the redirect in create() tho
-    return "this is where the homepage stories will go!"
+    return render_template('homepage.html')
 
 
 if __name__ == "__main__":

@@ -1,0 +1,22 @@
+{% extends "parent.html" %}
+
+{% block title %}
+  Sign Up
+{% endblock %}
+
+{% block pagename %}
+  Create an Account
+{% endblock %}
+
+{% block content %}
+  Join us
+  <form action = "/join" method="POST">
+    <p>
+    Create Username:
+    <input type="text"name="new_user"><br>
+    Create Password
+    <input type="text" name="new_password"><br>
+    <input type = "submit"value = "Sign Up"> {# to welcome page #}
+    </p>
+  </form>
+{% endblock %}
