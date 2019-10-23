@@ -70,3 +70,10 @@ amandaC - 2019-10-22 08:38
 Added flask app template
 Create template for all HTML files
 Create welcome page of app
+
+kiranV - 2019-10-23 06:30
+Rewrote the base level code for account creation
+Restriction account creation to unused usernames
+Created login code
+Set logged in users to redirect away from '/'
+Corrected flash display on root template
