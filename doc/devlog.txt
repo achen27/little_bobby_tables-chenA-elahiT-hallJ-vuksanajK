@@ -57,6 +57,11 @@ SQLITE LEFT Join
 The left join is used to query between two tables, the elements in the first table as specified is added to the left while elements matching rows with the left table are added to the right.By using where, we can generate only those elements in the left which fulfill our where criteria.
 This can be helpful to the various tables in our database.
 
+tanzimE 2019-10-22 12 PM
+Created beta log in and username funds
+Created databases with the necessary tables
+Made the database update with each username
+
 kiranV - 2019-10-22 05:22
 SQLITE Cross Join: As opposed to the other forms of join which have conditions on which the two tables are joined, CROSS JOIN outputs a result joining each element of one table with each element of the next table, for every possible combination.
 If the lengths of the two tables are size m and n, the CROSS JOIN output will have (m*n) results.
