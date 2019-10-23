@@ -71,6 +71,11 @@ Added flask app template
 Create template for all HTML files
 Create welcome page of app
 
+tanzimE 2019-10-23 00:00
+Created beta log in and username funds
+Created databases with the necessary tables
+Made the database update with each username
+
 kiranV - 2019-10-23 06:30
 Rewrote the base level code for account creation
 Restriction account creation to unused usernames
