@@ -12,9 +12,9 @@ import sqlite3
 data="data.db"
 db=sqlite3.connect(data)
 c=db.cursor()
-command="CREATE TABLE if not EXISTS Story_List(ID INTEGER,Story TEXT)"
+command="CREATE TABLE if not EXISTS Story_List(ID INTEGER, Title TEXT, Story TEXT)"
 c.execute(command)
-command="CREATE TABLE if not EXISTS Edits(ID INTEGER,Edit TEXT,Username TEXT)"
+command="CREATE TABLE if not EXISTS Edits(ID INTEGER,Edit TEXT,Timestamp TIMESTAMP, Username TEXT)"
 c.execute(command)
 command="CREATE TABLE if not EXISTS Accounts(Username TEXT,Password TEXT)"
 c.execute(command)
@@ -123,6 +123,49 @@ def mystories():
     else:
         return redirect(url_for('root'))
 
+@app.route("/modify",methods=['GET'])
+def modifypage():
+    print(request.method)
+    storyID = request.args['story_id']
+
+    db = sqlite3.connect('data.db')
+    c = db.cursor()
+
+    command = '''
+    select
+        Story_List.Title,
+        Edits.Edit,
+        Edits.Timestamp,
+        Edits.Username
+    from
+        Story_List
+    left join
+        Edits using (ID)
+    where Story_List.ID={}
+    order by Edits.Timestamp desc;
+    '''
+    c.execute(command.format(storyID,storyID))
+    result = c.fetchone()
+    print(result)
+    if(result is None):
+        # case: invalid id, no story with such id
+        db.commit()
+        db.close()
+
+        flash('Error occured: no such story with given id')
+        return redirect(url_for('mystories'))
+
+    db.commit()
+    db.close()
+
+    print(result[0])
+    return render_template(
+        'modify.html',
+        storyTitle=result[0],
+        lastAuthor=result[3],
+        lastEditTime=result[2],
+        lastEditContents=result[1]
+    )
 
 if __name__ == "__main__":
     app.debug = True

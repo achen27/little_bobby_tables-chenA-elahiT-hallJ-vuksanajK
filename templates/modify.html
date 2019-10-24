@@ -1,0 +1,22 @@
+{% extends "parent.html" %}
+
+{% block title %}
+  Modify Story - {{storyTitle}}
+{% endblock %}
+
+{% block pagename %}
+  Contribute to a Story: {{storyTitle}}
+{% endblock %}
+
+{% block content %}
+  <p>Most Recent Edit: authored by {{lastAuthor}} at {{lastEditTime}}</p>
+  <hr />
+  {{lastEditContents}}
+  <hr />
+  <p>Add your voice to the story!</p>
+  <form action = "/modify" method="POST">
+    <textarea name="newedit" placeholder="Add your text here" rows=15 cols=100></textarea>
+    <br />
+    <input type="submit" name="submit" value="Submit Additions" />
+  </form>
+{% endblock %}
