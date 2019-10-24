@@ -8,6 +8,7 @@
 from flask import Flask, render_template, request, redirect, url_for,session, flash, get_flashed_messages
 import os
 import sqlite3
+
 #the sqlite part aka db_builder.py
 data="data.db"
 db=sqlite3.connect(data)
@@ -20,6 +21,7 @@ command="CREATE TABLE if not EXISTS Accounts(Username TEXT,Password TEXT)"
 c.execute(command)
 db.commit()
 db.close()
+
 #the flask part
 app = Flask(__name__)
 name = "Storybuilder"
@@ -106,6 +108,8 @@ def authenticate():
 @app.route("/logout")
 def logout():
     app.secret_key = os.urandom(32)
+    session.pop('user') #removes session info
+    session.pop('pass')
     return redirect(url_for('root'))
 
 
@@ -119,6 +123,17 @@ def mystories():
     if('username' in session):
         return render_template('homepage.html',
                                 username=session['username']
+                                )
+    else:
+        return redirect(url_for('root'))
+
+@app.route("/otherstories")
+def otherstories():
+    #s = getStories("...")
+    if('username' in session):
+        return render_template('other.html',
+                                username=session['username']
+                                #stories = s
                                 )
     else:
         return redirect(url_for('root'))
