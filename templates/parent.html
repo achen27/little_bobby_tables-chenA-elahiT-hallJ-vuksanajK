@@ -17,6 +17,15 @@
     {% endfor %}
   </p>
   {% endblock %}
+
+  {% block logout %}
+    {% if username %}
+      Welcome {{username}}! <a href="/logout">Logout</a>
+    {% else %}
+      You are not logged in.
+    {% endif %}
+  {% endblock %}
+
   <br>
   {% block content %}
   {% endblock %}

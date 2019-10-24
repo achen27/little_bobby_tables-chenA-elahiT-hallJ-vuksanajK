@@ -103,7 +103,10 @@ def authenticate():
                             arg_user = str(request.args["username"]),
                             arg_method = str(request.method))
 
-
+@app.route("/logout")
+def logout():
+    app.secret_key = os.urandom(32)
+    return redirect(url_for('root'))
 
 
 @app.route("/error")
@@ -113,8 +116,12 @@ def err():
 
 @app.route("/mystories")
 def mystories():
-    # this is super temporary! if someone else changes this pls update the redirect in create() tho
-    return render_template('homepage.html')
+    if('username' in session):
+        return render_template('homepage.html',
+                                username=session['username']
+                                )
+    else:
+        return redirect(url_for('root'))
 
 
 if __name__ == "__main__":
