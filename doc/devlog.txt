@@ -84,7 +84,9 @@ Set logged in users to redirect away from '/'
 Corrected flash display on root template
 
 kiranV - 2019-10-23 08:35
-???
+(pushed super late, in class work)
+Wrote logout function clearing session (resetting secret_key)
+Added logout block to parent template, shows logout link whenever a page passes `username` as a variable
 
 amandaC - 2019-10-23 10:21
 Changed links on welcome page into buttons and edited welcome message
