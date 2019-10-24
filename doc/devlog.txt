@@ -90,3 +90,11 @@ Added logout block to parent template, shows logout link whenever a page passes 
 
 amandaC - 2019-10-23 10:21
 Changed links on welcome page into buttons and edited welcome message
+
+kiranV - 2019-10-24 05:30
+Built template for the page where contributions will occur
+Added a couple table headers we forgot earlier **
+Created query to get all edits for a specific page, sorted by timestamps
+Tested display of page by adding edits in sqlite3 shell (will work later with website functionality when other functions are written)
+
+**Please git rm data.db!! since headers changed, old versions of the db could mess with code for the modify page
