@@ -10,7 +10,11 @@
 
 
 {% block content %}
-  <p> Welcome! Please sign up or log in. </p>
-  <a href="/join">Sign Up!</a><br />
-  <a href="/login">Login</a>
+  <p> Welcome! Please create an account or log in. </p>
+  <form action = "/join">
+    <input type = "submit" value = "Create Account">
+  </form>
+  <form action = "/login">
+    <input type="submit" value ="Login">
+  </form>
 {% endblock %}
