@@ -20,7 +20,10 @@
 
   {% block logout %}
     {% if username %}
-      Welcome {{username}}! <a href="/logout">Logout</a>
+      Welcome {{username}}!
+      <form action = "/logout" method="GET">
+        <input type = "submit" value = "Logout">
+      </form>
     {% else %}
       You are not logged in.
     {% endif %}
