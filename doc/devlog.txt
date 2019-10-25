@@ -130,3 +130,7 @@ Added more database functions we will use in the future
 
 kiranV - 2019-10-24 22:57
 Worked out bugs in add to database function (needs to merge with amandas alternate)
+
+kiranV - 2019-10-25 06:07
+Wrote 'otherstories' databasing method to generate the list of titles not currently contributed to by the user
+Added to 'other.html' template to add very basic level links to the stories not yet edited (more changes might be necessary to /otherstories page but it's now functional)
