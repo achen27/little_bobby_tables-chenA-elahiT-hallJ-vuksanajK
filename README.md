@@ -6,13 +6,38 @@ Roster:
 * Kiran Vuksanaj
 * Tanzim Elahi
 
-#  Directions
-1. Clone Repository
-2. Run
+##  Instructions
+# Dependencies
+You must have the Python module "flask" installed
+In a terminal:
+```
+   $ pip3 install flask
+```
+
+Note:
+The pip3 command may be restricted on certain computers. 
+You can get around this by creating a virtual environment:
+```
+   python3 -m venv <name_of_venv>
+```
+To activate the virtual environment (MacOS or Linux):
+```
+   $ . <name_of_venv>/bin/activate
+```
+
+To deactivate the virtual environment (MacOS or Linux):
+```
+   $ deactivate
+```
+
+# Run
+0.5. If you installed Flask on a virtual environment, activate the environment
+1. Clone the Repository
+2. Run:
    ```
    python3 app.py
    ```
-3. Open URL
+3. Open the URL generated
 4. Login or Create an Account
 5. The Homepage will list the stories you have contributed to. Click on them to read the full story.
 6. Click on Modify to look at stories you have not contributed to. Click on a story to submit an edit. This will move
