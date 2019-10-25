@@ -152,7 +152,7 @@ def contribute_to_story():
 
     print(story_id)
 
-    return_alert = databasing.addedittodatabase(username,story_id,edit_text)
+    return_alert = databasing.addEdit(username,story_id,edit_text)
     flash(return_alert)
     return redirect(url_for("mystories"))
 

@@ -187,17 +187,6 @@ def otherStories(user):
 
     return results
 
-def addEdit(storyID,edit,time,user):
-    data="data.db"
-    db=sqlite3.connect(data)
-    c=db.cursor()
-
-    command="INSERT INTO Accounts VALUES(\"{}\",\"{}\",\"{}\",\"{}\")"
-    c.execute( command.format(storyID,edit,time,user) )
-
-    db.commit()
-    db.close()
-
 def addStory(storyID,title,story):
     data="data.db"
     db=sqlite3.connect(data)
@@ -210,7 +199,7 @@ def addStory(storyID,title,story):
     db.close()
 
 
-def addedittodatabase(username,id,editText):
+def addEdit(username,id,editText):
     db = sqlite3.connect('data.db')
     c = db.cursor()
     command = 'select count(*) from Edits where id={} and username="{}"'
