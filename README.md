@@ -6,8 +6,8 @@ Roster:
 * Kiran Vuksanaj
 * Tanzim Elahi
 
-##  Instructions
-# Dependencies
+#  Instructions
+## Dependencies
 You must have the Python module "flask" installed
 In a terminal:
 ```
@@ -30,7 +30,7 @@ To deactivate the virtual environment (MacOS or Linux):
    $ deactivate
 ```
 
-# Run
+## Run
 1. If you installed Flask on a virtual environment, activate the environment
 2. Clone the Repository
 3. Run:
