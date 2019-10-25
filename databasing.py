@@ -38,57 +38,6 @@ def addUser(user,p):
     db.commit()
     db.close()
 
-def userStories(user):
-    data="data.db"
-    db=sqlite3.connect(data)
-    c=db.cursor()
-
-    command='''
-        SELECT
-            ID,
-            Title,
-            Story
-        FROM
-            Story_List
-        INNER JOIN
-            Edits using (ID)
-        WHERE
-            Username=\"{}\";
-        '''
-    c.execute( command.format(user) )
-    results = c.fetchall()
-
-    db.commit()
-    db.close()
-
-    return results
-
-def otherStories(user):
-    data="data.db"
-    db=sqlite3.connect(data)
-    c=db.cursor()
-
-    # command='''
-    #     SELECT
-    #         ID,
-    #         Title,
-    #         Story
-    #     FROM
-    #         Story_List
-    #     INNER JOIN
-    #         Edits using (ID)
-    #     WHERE
-    #         Username!=\"{}\";
-    #     '''
-        #***********THIS DOES NOT WORK!!***********
-    c.execute( command.format(user) )
-    results = c.fetchall()
-
-    db.commit()
-    db.close()
-
-    return results
-
 def addEdit(storyID,edit,time,user):
     data="data.db"
     db=sqlite3.connect(data)
