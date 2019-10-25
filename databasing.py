@@ -162,25 +162,38 @@ def userStories(user):
     return results
 
 def otherStories(user):
+    print('get other stories for {}'.format(user))
     data="data.db"
     db=sqlite3.connect(data)
     c=db.cursor()
 
-    # command='''
-    #     SELECT
-    #         ID,
-    #         Title,
-    #         Story
-    #     FROM
-    #         Story_List
-    #     INNER JOIN
-    #         Edits using (ID)
-    #     WHERE
-    #         Username!=\"{}\";
-    #     '''
-        #***********THIS DOES NOT WORK!!***********
+    # command = '''
+    # i think this could be workable code but the next is more direct
+    # SELECT
+    #     ID,Title,Username
+    # FROM
+    #     Story_List
+    # LEFT JOIN
+    #     Edits USING ( ID )
+    # WHERE
+    #     Username != '{}';
+    # '''
+    command = '''
+    SELECT
+        ID,Title
+    FROM
+        Story_List
+    WHERE
+        NOT EXISTS (
+            SELECT Username
+            FROM Edits
+            WHERE
+                Username=='rubyred' AND ID=Story_List.ID
+        );
+    '''
     c.execute( command.format(user) )
     results = c.fetchall()
+    print(results)
 
     db.commit()
     db.close()
@@ -216,7 +229,7 @@ def addEdit(username,id,editText):
             ('{}','{}',datetime('now'),'{}');
         '''
         print(command)
-        print(command.format(username,id,editText))
+        print(command.format(id,editText,username))
         c.execute(command.format(username,id,editText))
         db.commit()
         db.close()

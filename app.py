@@ -104,9 +104,11 @@ def mystories():
 def otherstories():
     #s = getStories("...")
     if('username' in session):
+        username = session['username']
+        s = databasing.otherStories(username)
         return render_template('other.html',
-                                username=session['username']
-                                #stories = s
+                                username=session['username'],
+                                stories = s
                                 )
     else:
         return redirect(url_for('root'))

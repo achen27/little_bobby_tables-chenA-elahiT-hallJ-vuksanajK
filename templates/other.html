@@ -7,8 +7,11 @@
   </p>
 </form>
 
-Click on a story to edit!
+Click on a story to edit!<br />
 
-
-
+{% for story in stories %}
+  Story:
+  <a href="/modify?story_id={{story[0]}}">{{story[1]}}</a>
+  <br />
+{% endfor %}
 {% endblock %}
