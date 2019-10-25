@@ -125,4 +125,7 @@ tanzimE -2019-10-24 08:45
 Added insert and find functions for the database tables
 
 amandaC -2019-10-24 12:01
-Separated all database functions into another file
+Separated current database functions into another file
+
+amandaC -2019-10-24 22:07
+Added more database functions we will use in the future
