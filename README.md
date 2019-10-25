@@ -6,7 +6,7 @@ Roster:
 * Kiran Vuksanaj
 * Tanzim Elahi
 
-## 🧭 Directions
+# 🧭 Directions
        1. Clone Repository
        2. Run
           ```
