@@ -62,3 +62,27 @@ def getStory(storyID):
     db.close()
 
     return result
+
+
+def addedittodatabase(username,id,editText):
+    db = sqlite3.connect('data.db')
+    c = db.cursor()
+    command = 'select count(*) from Edits where id={} and username="{}"'
+    c.execute(command.format(id,username))
+    if(c.fetchone()[0] > 0):
+        db.commit()
+        db.close()
+        return 'You have already contributed to this story!'
+    else:
+        command = '''
+        insert into Edits
+            (ID,Edit,Timestamp,Username)
+        values
+            ('{}','{}',datetime('now'),'{}');
+        '''
+        print(command)
+        print(command.format(username,id,editText))
+        c.execute(command.format(username,id,editText))
+        db.commit()
+        db.close()
+        return 'Submission successfully added.'

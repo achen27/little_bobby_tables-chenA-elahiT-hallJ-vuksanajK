@@ -114,6 +114,10 @@ def otherstories():
 @app.route("/modify",methods=['GET'])
 def modifypage():
     print(request.method)
+    if(not 'username' in session):
+        flash('You are not logged in. Please login to access this page.')
+        return redirect(url_for('root'))
+    username = session['username']
     storyID = request.args['story_id']
 
     result = databasing.getStory(storyID)
@@ -134,7 +138,8 @@ def modifypage():
         lastAuthor=result[3],
         lastEditTime=result[2],
         lastEditContents=result[1],
-        story_id=storyID
+        story_id=storyID,
+        username=username
     )
 
 @app.route("/modify",methods=['POST'])
@@ -147,29 +152,10 @@ def contribute_to_story():
 
     print(story_id)
 
-    addedittodatabase(username,story_id,edit_text)
-
+    return_alert = databasing.addedittodatabase(username,story_id,edit_text)
+    flash(return_alert)
     return redirect(url_for("mystories"))
 
 if __name__ == "__main__":
     app.debug = True
     app.run()
-
-def addedittodatabase(username,id,editText):
-    db = sqlite3.connect('data.db')
-    c = db.cursor()
-    command = 'select count(*) from Edits where id={} and username={}'
-    c.execute(command.format(id,username))
-    if(c.fetchone()[0] > 0):
-        flash('you have already contributed to this story!')
-        db.commit()
-        db.close()
-    else:
-        command = """
-        insert into
-            Edits (username,ID,Timestamp,Edit)
-            values ({},{},datetime('now'),{});
-        """
-        c.execute(command.format(username,id,editText))
-        c.commit()
-        c.close()

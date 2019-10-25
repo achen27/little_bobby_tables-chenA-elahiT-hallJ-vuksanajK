@@ -102,9 +102,6 @@ Created back buttons on login and create account pages
 Added logout button on homepage
 Added a page to show other stories
 
-kiranV - 2019-10-24 08:35
-??
-
 **Please git rm data.db!! since headers changed, old versions of the db could mess with code for the modify page
 
 tanzimE -2019-10-24 08:45
