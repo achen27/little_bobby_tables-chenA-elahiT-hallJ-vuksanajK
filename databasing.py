@@ -200,13 +200,18 @@ def otherStories(user):
 
     return results
 
-def addStory(storyID,title,story):
+def addStory(title,story):
     data="data.db"
     db=sqlite3.connect(data)
     c=db.cursor()
 
+    # determine how many stories already exist
+    command = "SELECT count(*) FROM Story_List;"
+    newID = c.fetchone()[0]
+    print(newID)
+
     command="INSERT INTO Accounts VALUES(\"{}\",\"{}\",\"{}\")"
-    c.execute( command.format(storyID,title,story) )
+    c.execute( command.format(newID,title,story) )
 
     db.commit()
     db.close()
