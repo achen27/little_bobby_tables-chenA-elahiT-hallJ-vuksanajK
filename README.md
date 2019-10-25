@@ -31,16 +31,16 @@ To deactivate the virtual environment (MacOS or Linux):
 ```
 
 # Run
-0.5. If you installed Flask on a virtual environment, activate the environment
-1. Clone the Repository
-2. Run:
+1. If you installed Flask on a virtual environment, activate the environment
+2. Clone the Repository
+3. Run:
    ```
    python3 app.py
    ```
-3. Open the URL generated
-4. Login or Create an Account
-5. The Homepage will list the stories you have contributed to. Click on them to read the full story.
-6. Click on Modify to look at stories you have not contributed to. Click on a story to submit an edit. This will move
+4. Open the URL generated
+5. Login or Create an Account
+6. The Homepage will list the stories you have contributed to. Click on them to read the full story.
+7. Click on Modify to look at stories you have not contributed to. Click on a story to submit an edit. This will move
    the story to your homepage
-7. Click on Create Story to start writing a new story. This will move the story to your homepage
-8. Click Logout to log out
+8. Click on Create Story to start writing a new story. This will move the story to your homepage
+9. Click Logout to log out
