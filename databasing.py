@@ -4,7 +4,7 @@ def buildDB():
     data="data.db"
     db=sqlite3.connect(data)
     c=db.cursor()
-    command="CREATE TABLE if not EXISTS Story_List(ID INTEGER, Title TEXT, Story TEXT)"
+    command="CREATE TABLE if not EXISTS Story_List(ID INTEGER PRIMARY KEY, Title TEXT, Story TEXT)"
     c.execute(command)
     command="CREATE TABLE if not EXISTS Edits(ID INTEGER,Edit TEXT,Timestamp TIMESTAMP, Username TEXT)"
     c.execute(command)
@@ -18,7 +18,7 @@ def verifyUser(user):
     db=sqlite3.connect(data)
     c=db.cursor()
 
-    command = "SELECT count(*) FROM Accounts WHERE username=\"{}\";"
+    command = "SELECT count(*) FROM Accounts WHERE Username=\"{}\";"
 
     countWithUser = c.execute( command.format(user) )
     data = c.fetchone()[0] # i dont get this line? gonna try and figure it out later
@@ -34,6 +34,79 @@ def addUser(user,p):
 
     command="INSERT INTO Accounts VALUES(\"{}\",\"{}\")"
     c.execute( command.format(user,p) )
+
+    db.commit()
+    db.close()
+
+def userStories(user):
+    data="data.db"
+    db=sqlite3.connect(data)
+    c=db.cursor()
+
+    command='''
+        SELECT
+            ID,
+            Title,
+            Story
+        FROM
+            Story_List
+        INNER JOIN
+            Edits using (ID)
+        WHERE
+            Username=\"{}\";
+        '''
+    c.execute( command.format(user) )
+    results = c.fetchall()
+
+    db.commit()
+    db.close()
+
+    return results
+
+def otherStories(user):
+    data="data.db"
+    db=sqlite3.connect(data)
+    c=db.cursor()
+
+    # command='''
+    #     SELECT
+    #         ID,
+    #         Title,
+    #         Story
+    #     FROM
+    #         Story_List
+    #     INNER JOIN
+    #         Edits using (ID)
+    #     WHERE
+    #         Username!=\"{}\";
+    #     '''
+        #***********THIS DOES NOT WORK!!***********
+    c.execute( command.format(user) )
+    results = c.fetchall()
+
+    db.commit()
+    db.close()
+
+    return results
+
+def addEdit(storyID,edit,time,user):
+    data="data.db"
+    db=sqlite3.connect(data)
+    c=db.cursor()
+
+    command="INSERT INTO Accounts VALUES(\"{}\",\"{}\",\"{}\",\"{}\")"
+    c.execute( command.format(storyID,edit,time,user) )
+
+    db.commit()
+    db.close()
+
+def addStory(storyID,title,story):
+    data="data.db"
+    db=sqlite3.connect(data)
+    c=db.cursor()
+
+    command="INSERT INTO Accounts VALUES(\"{}\",\"{}\",\"{}\")"
+    c.execute( command.format(storyID,title,story) )
 
     db.commit()
     db.close()
