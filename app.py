@@ -179,6 +179,20 @@ def addstory():
     else:
         flash('This page is not accessible without login.')
         return redirect(url_for('root'))
+
+@app.route("/readstory",methods=['GET'])
+def readstory():
+    if('username' in session):
+        username = session['username']
+        ID = request.args['story_id']
+        story = databasing.story(ID)
+        if(databasing.userHasEdited(username,ID)):
+            return render_template(
+                "display.html",
+                title=story[1],
+                contents=story[0],
+                username=username
+            )
 if __name__ == "__main__":
     app.debug = True
     app.run()

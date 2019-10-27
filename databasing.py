@@ -188,14 +188,14 @@ def addEdit(username,id,editText):
         db.commit()
         db.close()
         return 'Submission successfully added.'
-def story(title): #gets the content of the stories
+def story(id): #gets the content of the stories
     db = sqlite3.connect('data.db')
     c = db.cursor()
-    command='''Select Story
+    command='''Select Story, Title
              From Story_List
-             Where Title=\"{}\"
+             Where ID={}
              '''
-    c.execute(command.format(title))
+    c.execute(command.format(id))
     result=c.fetchone()
     db.commit()
     db.close()
@@ -237,3 +237,16 @@ def addStory(title,story):
     db.close()
 
     return newID
+
+def userHasEdited(username,id): # checks whether story should be visible to user
+    db = sqlite3.connect('data.db')
+    c = db.cursor()
+
+    command="select count(*) from Edits where ID={} and Username=\'{}\'"
+    c.execute(command.format(id,username))
+    countEdits = c.fetchone()[0]
+
+    db.commit()
+    db.close()
+
+    return countEdits == 1
