@@ -33,7 +33,7 @@ To deactivate the virtual environment (MacOS or Linux):
 ## Run
 1. If you installed Flask on a virtual environment, activate the environment
 2. Clone the Repository
-3. Run:
+3. Run
    ```
    python3 app.py
    ```
