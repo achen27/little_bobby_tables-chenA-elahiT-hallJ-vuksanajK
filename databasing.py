@@ -156,14 +156,17 @@ def addStory(title,story):
 
     # determine how many stories already exist
     command = "SELECT count(*) FROM Story_List;"
+    c.execute(command)
     newID = c.fetchone()[0]
     print(newID)
 
-    command="INSERT INTO Accounts VALUES(\"{}\",\"{}\",\"{}\")"
+    command="INSERT INTO Story_List VALUES(\"{}\",\"{}\",\"{}\")"
     c.execute( command.format(newID,title,story) )
 
     db.commit()
     db.close()
+
+    return newID # so that the new story can be accessed post creation, return the generated id
 
 
 def addEdit(username,id,editText):
@@ -184,7 +187,7 @@ def addEdit(username,id,editText):
         '''
         print(command)
         print(command.format(id,editText,username))
-        c.execute(command.format(username,id,editText))
+        c.execute(command.format(id,editText,username))
         db.commit()
         db.close()
         return 'Submission successfully added.'

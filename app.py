@@ -158,6 +158,30 @@ def contribute_to_story():
     flash(return_alert)
     return redirect(url_for("mystories"))
 
+@app.route("/addstory",methods=['GET'])
+def addstorypage():
+    if('username' in session):
+        return render_template(
+            'addstory.html',
+            username=session['username']
+        )
+    else:
+        flash('This page is not accessible without login.')
+        return redirect(url_for('root'))
+
+@app.route("/addstory",methods=['POST'])
+def addstory():
+    if('username' in session):
+        username = session['username']
+        title = request.form['title']
+        firstedit = request.form['edit']
+        id = databasing.addStory(title,firstedit)
+        databasing.addEdit(username,id,firstedit)
+        flash('Story successfully created!')
+        return redirect(url_for('mystories'))
+    else:
+        flash('This page is not accessible without login.')
+        return redirect(url_for('root'))
 if __name__ == "__main__":
     app.debug = True
     app.run()
