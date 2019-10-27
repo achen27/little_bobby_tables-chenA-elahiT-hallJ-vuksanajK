@@ -91,6 +91,7 @@ def err():
 def mystories():
     if('username' in session):
         data=databasing.userStories(session["username"])
+        print(data)
         return render_template('homepage.html',
                                 username=session['username'],
                                 stories=data

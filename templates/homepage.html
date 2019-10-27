@@ -8,9 +8,7 @@
 These are your stories <br>
 
 {% for story in stories %}
-
-    {{story[1]}}:<br>
-    {{story[2]}}
-    <p>
+  <a href="/?story_id={{story[0]}}">{{story[1]}}</a>
+  <br />
 {% endfor %}
 {% endblock %}

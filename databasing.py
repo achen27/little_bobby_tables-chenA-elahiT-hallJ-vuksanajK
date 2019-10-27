@@ -99,18 +99,20 @@ def userStories(user):
 
     command='''
         SELECT
-            ID,
-            Title,
-            Story
+            ID,Title
         FROM
             Story_List
-        INNER JOIN
-            Edits using (ID)
         WHERE
-            Username=\"{}\";
+            EXISTS (
+                SELECT Username
+                FROM Edits
+                WHERE
+                    Username==\'{}\' AND ID=Story_List.ID
+            );
         '''
     c.execute( command.format(user) )
     results = c.fetchall()
+    print(results)
 
     db.commit()
     db.close()
@@ -144,7 +146,7 @@ def otherStories(user):
             SELECT Username
             FROM Edits
             WHERE
-                Username=='rubyred' AND ID=Story_List.ID
+                Username==\'{}\' AND ID=Story_List.ID
         );
     '''
     c.execute( command.format(user) )
