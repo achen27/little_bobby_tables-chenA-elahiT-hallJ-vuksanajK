@@ -141,3 +141,6 @@ Wrote 'addstory' databasing method, and matching '/addstory' form and submission
 
 kiranV - 2019-10-27 15:08
 Made corrections to query for getting user's contributed stories, added links to homepage
+
+kiranV - 2019-10-27 15:24
+Created page to display stories, locked to users who have contributed.
