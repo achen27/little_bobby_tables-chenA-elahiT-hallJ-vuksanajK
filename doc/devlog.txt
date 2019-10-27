@@ -139,3 +139,5 @@ kiranV - 2019-10-26 20:26
 Wrote 'addstory' databasing method, and matching '/addstory' form and submission code to create a new story
 **please rm database again! story creation currently relies on id'ing starting from 0 and going up
 
+kiranV - 2019-10-27 15:08
+Made corrections to query for getting user's contributed stories, added links to homepage
