@@ -1,0 +1,16 @@
+{% extends "parent.html" %}
+{% block title %}your stories {% endblock %}
+{% block content %}
+<form action = "/otherstories" method="GET">
+  <input type = "submit" value = "Other Stories">
+</form>
+<a href="/addstory">Start your own story!</a><br />
+These are your stories <br>
+
+{% for story in stories %}
+
+    {{story[1]}}:<br>
+    {{story[2]}}
+    <p>
+{% endfor %}
+{% endblock %}
