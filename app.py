@@ -193,6 +193,12 @@ def readstory():
                 contents=story[0],
                 username=username
             )
+        else:
+            flash('You do not have access to this story! Please contribute first.')
+            return redirect(url_for('mystories'))
+    else:
+        flash('Please log in to access this page.')
+        return redirect(url_for('root'))
 if __name__ == "__main__":
     app.debug = True
     app.run()
