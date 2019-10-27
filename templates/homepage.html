@@ -4,7 +4,10 @@
 <form action = "/otherstories" method="GET">
   <input type = "submit" value = "Other Stories">
 </form>
-<a href="/addstory">Start your own story!</a><br />
+Start your own story!
+<form action = "/addstory" method="GET">
+  <input type = "submit" value = "Create Story">
+</form>
 These are your stories <br>
 
 {% for story in stories %}
