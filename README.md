@@ -2,8 +2,8 @@
 
 Roster:
 * Amanda Chen (PM)
-* Kiran Vuksanaj (Frontend + Backend)
-* Tanzim Elahi (Database + Frontend)
+* Kiran Vuksanaj (Frontend HTML + Backend SQL)
+* Tanzim Elahi (Backend Flask + SQL)
 
 #  Instructions
 ## Dependencies
