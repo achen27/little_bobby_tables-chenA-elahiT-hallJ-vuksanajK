@@ -1,0 +1,23 @@
+{% extends "parent.html" %}
+
+{% block title %}
+  Add a New Story!
+{% endblock %}
+
+{% block pagename %}
+  Start a Story
+{% endblock %}
+
+{% block content %}
+  <form action = "/" method="GET">
+    <p>
+    <input type = "submit" value = "Back"> {# to welcome page #}
+    </p>
+  </form>
+  <form method="POST">
+    Story Title: <input type="text" name="title"/><br />
+    First Edit: <br />
+    <textarea name="edit" placeholder="Add your text here" rows=15 cols=100></textarea><br />
+    <input type="submit" name="submit" value="Submit your Story" />
+  </form>
+{% endblock %}

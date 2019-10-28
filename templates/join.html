@@ -9,14 +9,19 @@
 {% endblock %}
 
 {% block content %}
-  Join us
+  Join us!
   <form action = "/join" method="POST">
     <p>
-    Create Username:
+    Create Username: 
     <input type="text"name="new_user"><br>
-    Create Password
+    Create Password:
     <input type="text" name="new_password"><br>
-    <input type = "submit"value = "Sign Up"> {# to welcome page #}
+    <input type = "submit"value = "Sign Up"> {# to homepage #}
+    </p>
+  </form>
+  <form action = "/" method="GET">
+    <p>
+    <input type = "submit" value = "Back"> {# to welcome page #}
     </p>
   </form>
 {% endblock %}

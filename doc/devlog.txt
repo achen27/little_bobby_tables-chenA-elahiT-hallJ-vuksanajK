@@ -1,5 +1,5 @@
 Team Robert'); DROP TABLE S\*;-- (aka little_bobby_tables)
-Amanda Chen (PM), Tanzim Elahi, Jesse Hall, Kiran Vuksanaj
+Amanda Chen (PM), Tanzim Elahi, Kiran Vuksanaj
 SoftDev1 pd1
 P00 -- Devlog
 2019-10-20
@@ -50,17 +50,28 @@ What we can do:
 
 tanzimE -- 2019-10-21 23:40
 SQLITE JOIN
-Sqlite3 uses various joins to query data between tables: maninly inner join,left join and cross join.
+Sqlite3 uses various joins to query data between tables: mainly inner join, left
+join and cross join.
 
 tanzimE -- 2019-10-21 23:40
-SQLITE LEFT Join
-The left join is used to query between two tables, the elements in the first table as specified is added to the left while elements matching rows with the left table are added to the right.By using where, we can generate only those elements in the left which fulfill our where criteria.
+SQLITE LEFT JOIN
+The left join is used to query between two tables, the elements in the first
+table as specified is added to the left while elements matching rows with the
+left table are added to the right. By using where, we can generate only those
+elements in the left which fulfill our where criteria.
 This can be helpful to the various tables in our database.
 
 kiranV - 2019-10-22 05:22
-SQLITE Cross Join: As opposed to the other forms of join which have conditions on which the two tables are joined, CROSS JOIN outputs a result joining each element of one table with each element of the next table, for every possible combination.
-If the lengths of the two tables are size m and n, the CROSS JOIN output will have (m*n) results.
-None of our tables immediately lend themselves to such a form of joining, but if a feature such as, perhaps, 'view count by user' were to be added, a cross between users and stories would serve the purpose well.
+SQLITE CROSS JOIN
+As opposed to the other forms of join which have conditions on which the two
+tables are joined, CROSS JOIN outputs a result joining each element of one table
+with each element of the next table, for every possible combination. If the
+lengths of the two tables are size m and n, the CROSS JOIN output will have
+(m*n) results.
+None of our tables immediately lend themselves to such a form of joining, but if
+a feature such as, perhaps, 'view count by user' were to be added, a cross
+between users and stories would serve the purpose well.
+
 design.pdf
 Slight modifications to caption text
 Description of full project idea added
@@ -84,7 +95,71 @@ Set logged in users to redirect away from '/'
 Corrected flash display on root template
 
 kiranV - 2019-10-23 08:35
-???
+(pushed super late, in class work)
+Wrote logout function clearing session (resetting secret_key)
+Added logout block to parent template, shows logout link whenever a page passes
+`username` as a variable
 
 amandaC - 2019-10-23 10:21
 Changed links on welcome page into buttons and edited welcome message
+
+kiranV - 2019-10-24 05:30
+Built template for the page where contributions will occur
+Added a couple table headers we forgot earlier **
+Created query to get all edits for a specific page, sorted by timestamps
+Tested display of page by adding edits in sqlite3 shell (will work later with
+website functionality when other functions are written)
+**Please git rm data.db!! since headers changed, old versions of the db could mess with code for the modify page
+
+amandaC - 2019-10-24 08:27
+Created back buttons on login and create account pages
+Added logout button on homepage
+Added a page to show other stories
+
+kiranV - 2019-10-24 08:41 (commited late)
+Added post method route for /modify, to submit the edit to the database
+
+tanzimE -2019-10-24 08:45
+Added insert and find functions for the database tables
+
+amandaC -2019-10-24 12:01
+Separated all database functions into another file
+
+amandaC -2019-10-24 22:07
+Added more database functions we will use in the future
+
+kiranV - 2019-10-24 22:57
+Worked out bugs in add to database function (needs to merge with amandas alternate)
+
+kiranV - 2019-10-25 06:07
+Wrote 'otherstories' databasing method to generate the list of titles not currently contributed to by the user
+Added to 'other.html' template to add very basic level links to the stories not yet edited (more changes might be necessary to /otherstories page but it's now functional)
+
+kiranV - 2019-10-26 20:26
+Wrote 'addstory' databasing method, and matching '/addstory' form and submission code to create a new story
+**please rm database again! story creation currently relies on id'ing starting from 0 and going up
+
+kiranV - 2019-10-27 15:24
+Made corrections to query for getting user's contributed stories, added links to homepage
+Created page to display stories, locked to users who have contributed.
+
+amandaC - 2019-10-27 14:28
+Fixed small typos and formatting such as changing links to buttons
+
+kiranV - 2019-10-27 23:15
+Added some missing back buttons
+Fixed bug that arose with a nonexistent username being entered into login
+Put minimum char count on usernames and passwords of 3
+
+amandaC - 2019-10-27 23:19
+design doc
+Fixed small typos and redistributed roles to reflect project flow
+
+kiranV - 2019-10-27 23:30
+Made certain pages look a little clearer/prettier so that the site is more readable
+
+amandaC - 2019-10-28 00:38
+Created prefilled database
+
+amandaC - 2019-10-28 08:16
+Added more comments to code

@@ -10,11 +10,16 @@
 
 {% block content %}
 <form action = "/login" method="POST">
-  Log in:<br>
+  <br>
   Username:<br>
   <input type="text" name="username"><br>
   Password:<br>
-  <input type="text" name="password"><br>
-  <input type = "submit" name = "login" value = "Sign In"><br> {# to welcome page #}
+  <input type="text" name="password"><br><br>
+  <input type = "submit" name = "login" value = "Sign In"><br>
+</form>
+<form action = "/" method="GET">
+  <p>
+  <input type = "submit" value = "Back"> {# to welcome page #}
+  </p>
 </form>
 {% endblock %}
