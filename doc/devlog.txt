@@ -145,3 +145,8 @@ Created page to display stories, locked to users who have contributed.
 
 amandaC - 2019-10-27 14:28
 Fixed small typos and formatting such as changing links to buttons
+
+kiranV - 2019-10-27 23:15
+Added some missing back buttons
+Fixed bug that arose with a nonexistent username being entered into login
+Put minimum char count on usernames and passwords of 3
