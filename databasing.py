@@ -37,7 +37,7 @@ def rightLogin(user,givenPass):
          '''
     c.execute(command.format(user))
     info=c.fetchone()
-    if givenPass==info[0]:
+    if not info is None and givenPass==info[0]:
         return 1 #correct
     else:
         return 2 #incorrect
