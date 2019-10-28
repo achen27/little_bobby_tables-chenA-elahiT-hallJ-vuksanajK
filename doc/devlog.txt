@@ -160,3 +160,6 @@ Made certain pages look a little clearer/prettier so that the site is more reada
 
 amandaC - 2019-10-28 00:38
 Created prefilled database
+
+amandaC - 2019-10-28 08:16
+Added more comments to code
