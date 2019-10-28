@@ -155,7 +155,7 @@ def contribute_to_story():
     edit_text = request.form['newedit']
 
     print(story_id)
-    return_alert = databasing.addEdit(story_id,edit_text,username)
+    return_alert = databasing.addEdit(username,story_id,edit_text)
     databasing.update(edit_text,story_id)
     flash(return_alert)
     return redirect(url_for("mystories"))

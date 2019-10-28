@@ -26,6 +26,7 @@ def verifyUser(user):
 
     db.commit()
     db.close()
+
 def rightLogin(user,givenPass):
     data="data.db"
     db=sqlite3.connect(data)
@@ -43,6 +44,7 @@ def rightLogin(user,givenPass):
         return 2 #incorrect
     db.commit()
     db.close()
+
 def addUser(user,p):
     data="data.db"
     db=sqlite3.connect(data)
@@ -50,19 +52,6 @@ def addUser(user,p):
 
     command="INSERT INTO Accounts VALUES(\"{}\",\"{}\")"
     c.execute( command.format(user,p) )
-
-    db.commit()
-    db.close()
-
-
-
-def addStory(storyID,title,story):
-    data="data.db"
-    db=sqlite3.connect(data)
-    c=db.cursor()
-
-    command="INSERT INTO Story_List VALUES(\"{}\",\"{}\",\"{}\")"
-    c.execute( command.format(storyID,title,story) )
 
     db.commit()
     db.close()
@@ -154,17 +143,6 @@ def otherStories(user):
     db.commit()
     db.close()
     return results
-print(otherStories("Amanda"))
-def addStory(storyID,title,story):
-    data="data.db"
-    db=sqlite3.connect(data)
-    c=db.cursor()
-
-    command="INSERT INTO Story_List VALUES(\"{}\",\"{}\",\"{}\")"
-    c.execute( command.format(storyID,title,story) )
-
-    db.commit()
-    db.close()
 
 
 def addEdit(username,id,editText):
@@ -184,10 +162,11 @@ def addEdit(username,id,editText):
             ('{}','{}',datetime('now'),'{}');
         '''
 
-        c.execute(command.format(username,id,editText))
+        c.execute(command.format(id,editText,username))
         db.commit()
         db.close()
         return 'Submission successfully added.'
+
 def story(id): #gets the content of the stories
     db = sqlite3.connect('data.db')
     c = db.cursor()
@@ -200,6 +179,7 @@ def story(id): #gets the content of the stories
     db.commit()
     db.close()
     return result
+
 def update(text,story_id):
     db=sqlite3.connect('data.db')
     c=db.cursor()
@@ -219,6 +199,7 @@ def update(text,story_id):
     c.execute(command.format(info,story_id))
     db.commit()
     db.close()
+
 def addStory(title,story):
     data="data.db"
     db=sqlite3.connect(data)
