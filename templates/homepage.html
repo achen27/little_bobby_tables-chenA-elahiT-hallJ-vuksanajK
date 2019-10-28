@@ -1,17 +1,21 @@
 {% extends "parent.html" %}
 {% block title %}your stories {% endblock %}
 {% block content %}
-<form action = "/otherstories" method="GET">
-  <input type = "submit" value = "Other Stories">
-</form>
-Start your own story!
 <form action = "/addstory" method="GET">
-  <input type = "submit" value = "Create Story">
+  Start your own story! <input type = "submit" value = "Create Story">
 </form>
-These are your stories <br>
+<br />
+Below are the stories to which you have already contributed. Click the link to read the story in its entirety. <br>
 
 {% for story in stories %}
   <a href="/readstory?story_id={{story[0]}}">{{story[1]}}</a>
   <br />
+{% else %}
+  <i>You have not contributed to any stories yet.</i>
+  <br />
 {% endfor %}
+<br />
+<form action = "/otherstories" method="GET">
+  <input type = "submit" value = "Other Stories"> - See stories to which you have not contributed.
+</form>
 {% endblock %}
