@@ -27,6 +27,10 @@ def create():
     username=request.form["new_user"]
     password=request.form["new_password"]
 
+    if(len(username) < 3 or len(password) < 3):
+        flash("Your username and password must each have at least three characters.")
+        return redirect(url_for("root"))
+
     data = databasing.verifyUser(username)
     if(data == 0):
         databasing.addUser(username,password)
