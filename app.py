@@ -1,5 +1,5 @@
 # Team Robert’); DROP TABLE S\*;-- (a.k.a little_bobby_tables)
-#       Amanda Chen (PM), Jesse Hall, Kiran Vuksanaj, Tanzim Elahi
+#       Amanda Chen (PM), Kiran Vuksanaj, Tanzim Elahi
 # SoftDev1 Pd1
 # P00 -- Da Art of Storytellin' (Part X)
 # 2019-10-17

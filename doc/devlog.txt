@@ -1,5 +1,5 @@
 Team Robert'); DROP TABLE S\*;-- (aka little_bobby_tables)
-Amanda Chen (PM), Tanzim Elahi, Jesse Hall, Kiran Vuksanaj
+Amanda Chen (PM), Tanzim Elahi, Kiran Vuksanaj
 SoftDev1 pd1
 P00 -- Devlog
 2019-10-20
