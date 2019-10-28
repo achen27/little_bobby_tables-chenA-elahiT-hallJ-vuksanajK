@@ -150,3 +150,6 @@ kiranV - 2019-10-27 23:15
 Added some missing back buttons
 Fixed bug that arose with a nonexistent username being entered into login
 Put minimum char count on usernames and passwords of 3
+
+kiranV - 2019-10-27 23:30
+Made certain pages look a little clearer/prettier so that the site is more readable
