@@ -145,3 +145,7 @@ Created page to display stories, locked to users who have contributed.
 
 amandaC - 2019-10-27 14:28
 Fixed small typos and formatting such as changing links to buttons
+
+amandaC - 2019-10-27 23:19
+design doc
+Fixed small typos and redistributed roles to reflect project flow
