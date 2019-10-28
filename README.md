@@ -2,9 +2,8 @@
 
 Roster:
 * Amanda Chen (PM)
-* Jesse Hall
-* Kiran Vuksanaj
-* Tanzim Elahi
+* Kiran Vuksanaj (Frontend + Backend)
+* Tanzim Elahi (Database + Frontend)
 
 #  Instructions
 ## Dependencies
