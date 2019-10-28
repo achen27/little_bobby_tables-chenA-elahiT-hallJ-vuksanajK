@@ -10,7 +10,7 @@ import os
 import sqlite3
 import databasing
 
-#the sqlite part aka db_builder.py
+#the sqlite part to create a database
 databasing.buildDB()
 
 #the flask part
@@ -18,20 +18,35 @@ app = Flask(__name__)
 name = "Storybuilder"
 roster = "little_bobby_tables"
 app.secret_key=os.urandom(32)
-@app.route("/join",methods=['GET']) # the form to sign up
+
+@app.route("/")
+def root():
+    #user is redirected to home page if the are already logged in
+    if('username' in session):
+        flash('You are already logged in!')
+        return redirect(url_for("mystories"))
+    #user is directed to welcome if the are not already logged in
+    return render_template('root.html',
+                            team = name,
+                            rost = roster)
+
+@app.route("/join",methods=['GET']) #the page to sign up
 def signuppage():
-    return render_template('join.html'); # the method to add account
-@app.route("/join",methods=['POST'])
+    return render_template('join.html'); #redirect from welcome page button
+
+@app.route("/join",methods=['POST']) #the form to sign up
 def create():
 
     username=request.form["new_user"]
     password=request.form["new_password"]
 
+    #minimum character lengths
     if(len(username) < 3 or len(password) < 3):
         flash("Your username and password must each have at least three characters.")
         return redirect(url_for("root"))
 
     data = databasing.verifyUser(username)
+    #check for valid username and redirects to home page
     if(data == 0):
         databasing.addUser(username,password)
         flash('You have successfully created your account, and logged in!')
@@ -42,19 +57,9 @@ def create():
         return redirect(url_for("root"))
     return render_template('homepage.html')
 
-
-@app.route("/")
-def root():
-    if('username' in session):
-        flash('You are already logged in!')
-        return redirect(url_for("mystories"))
-    return render_template('root.html',
-                            team = name,
-                            rost = roster)
-
 @app.route("/login", methods=['GET']) # the form to login
-def loginform():
-    return render_template('login.html')
+def loginform(): #the page to log in
+    return render_template('login.html') #redirect from welcome page button
 
 @app.route("/login", methods=['POST']) # the method to login
 def authenticate():
@@ -63,8 +68,8 @@ def authenticate():
 
     result = databasing.rightLogin(username,password)
 
-
-    if(result == 1): # username and password valid
+    #checks if username and password is valid or returns to welcome page
+    if(result == 1):
         session['username'] = username
         flash('You have successfully logged in!')
         return redirect(url_for('mystories'))
@@ -78,6 +83,7 @@ def authenticate():
                             arg_method = str(request.method))
 
 @app.route("/logout")
+#removes user from session and returns to welcome page
 def logout():
     app.secret_key = os.urandom(32)
     #print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
@@ -88,10 +94,12 @@ def logout():
 
 
 @app.route("/error")
+#debugging
 def err():
     return "blaaa"
 
 @app.route("/mystories",methods=['GET'])
+#lists user accessible stories on homepage
 def mystories():
     if('username' in session):
         data=databasing.userStories(session["username"])
@@ -102,12 +110,14 @@ def mystories():
                                 )
     else:
         return redirect(url_for('root'))
-@app.route("/mystories",methods=['POST'])
-def tellStory():
-        return render_template("tale.html",)
+
+# @app.route("/mystories",methods=['POST'])
+# def tellStory():
+#         return render_template("tale.html",)
+
 @app.route("/otherstories")
 def otherstories():
-    #s = getStories("...")
+    #lists user editiable stories on otherstories page
     if('username' in session):
         username = session['username']
         s = databasing.otherStories(username)
@@ -120,7 +130,7 @@ def otherstories():
 
 @app.route("/modify",methods=['GET'])
 def modifypage():
-    #print(request.method)
+    #form to contribute to story
     if(not 'username' in session):
         flash('You are not logged in. Please login to access this page.')
         return redirect(url_for('root'))
@@ -148,6 +158,7 @@ def modifypage():
 
 @app.route("/modify",methods=['POST'])
 def contribute_to_story():
+    #adds results from form to databse
     if(not ('username' in session)):
         return redirect(url_for('root'))
     username = session['username']
@@ -159,8 +170,10 @@ def contribute_to_story():
     databasing.update(edit_text,story_id)
     flash(return_alert)
     return redirect(url_for("mystories"))
+
 @app.route("/addstory",methods=['GET'])
 def addstorypage():
+    #create story page
     if('username' in session):
         return render_template(
             'addstory.html',
@@ -172,6 +185,7 @@ def addstorypage():
 
 @app.route("/addstory",methods=['POST'])
 def addstory():
+    #adds story to database
     if('username' in session):
         username = session['username']
         title = request.form['title']
@@ -186,6 +200,7 @@ def addstory():
 
 @app.route("/readstory",methods=['GET'])
 def readstory():
+    #page to read entire story
     if('username' in session):
         username = session['username']
         ID = request.args['story_id']
