@@ -1,5 +1,5 @@
 Team Robert'); DROP TABLE S\*;-- (aka little_bobby_tables)
-Amanda Chen (PM), Tanzim Elahi, Jesse Hall, Kiran Vuksanaj
+Amanda Chen (PM), Tanzim Elahi, Kiran Vuksanaj
 SoftDev1 pd1
 P00 -- Devlog
 2019-10-20
@@ -150,6 +150,10 @@ kiranV - 2019-10-27 23:15
 Added some missing back buttons
 Fixed bug that arose with a nonexistent username being entered into login
 Put minimum char count on usernames and passwords of 3
+
+amandaC - 2019-10-27 23:19
+design doc
+Fixed small typos and redistributed roles to reflect project flow
 
 kiranV - 2019-10-27 23:30
 Made certain pages look a little clearer/prettier so that the site is more readable
