@@ -1,6 +1,6 @@
 import sqlite3
 
-def buildDB():
+def buildDB(): #builds a database with three tables
     data="data.db"
     db=sqlite3.connect(data)
     c=db.cursor()
@@ -13,7 +13,7 @@ def buildDB():
     db.commit()
     db.close()
 
-def verifyUser(user):
+def verifyUser(user): #searches database if user exists
     data="data.db"
     db=sqlite3.connect(data)
     c=db.cursor()
@@ -21,13 +21,13 @@ def verifyUser(user):
     command = "SELECT count(*) FROM Accounts WHERE Username=\"{}\";"
 
     countWithUser = c.execute( command.format(user) )
-    data = c.fetchone()[0] # i dont get this line? gonna try and figure it out later
+    data = c.fetchone()[0]
     return(data)
 
     db.commit()
     db.close()
 
-def rightLogin(user,givenPass):
+def rightLogin(user,givenPass): #searches database to match username and password
     data="data.db"
     db=sqlite3.connect(data)
     c=db.cursor()
@@ -45,7 +45,7 @@ def rightLogin(user,givenPass):
     db.commit()
     db.close()
 
-def addUser(user,p):
+def addUser(user,p): #adds user name and pass into database
     data="data.db"
     db=sqlite3.connect(data)
     c=db.cursor()
@@ -56,7 +56,7 @@ def addUser(user,p):
     db.commit()
     db.close()
 
-def getStory(storyID):
+def getStory(storyID): #returns row requested
     db = sqlite3.connect('data.db')
     c = db.cursor()
 
@@ -81,7 +81,7 @@ def getStory(storyID):
 
     return result
 
-def userStories(user):
+def userStories(user): #list of stories user has contributed to
     data="data.db"
     db=sqlite3.connect(data)
     c=db.cursor()
@@ -108,23 +108,12 @@ def userStories(user):
 
     return results
 
-def otherStories(user):
+def otherStories(user): #list of stories user has not contributed to
     print('get other stories for {}'.format(user))
     data="data.db"
     db=sqlite3.connect(data)
     c=db.cursor()
 
-    # command = '''
-    # i think this could be workable code but the next is more direct
-    # SELECT
-    #     ID,Title,Username
-    # FROM
-    #     Story_List
-    # LEFT JOIN
-    #     Edits USING ( ID )
-    # WHERE
-    #     Username != '{}';
-    # '''
     command = '''
     SELECT
         ID,Title
@@ -145,7 +134,7 @@ def otherStories(user):
     return results
 
 
-def addEdit(username,id,editText):
+def addEdit(username,id,editText): #adds contribution to database
     db = sqlite3.connect('data.db')
     c = db.cursor()
     command = 'select count(*) from Edits where id=\"{}\" and username=\"{}\"'
@@ -180,7 +169,7 @@ def story(id): #gets the content of the stories
     db.close()
     return result
 
-def update(text,story_id):
+def update(text,story_id): #updates full story
     db=sqlite3.connect('data.db')
     c=db.cursor()
     command='''
@@ -200,7 +189,7 @@ def update(text,story_id):
     db.commit()
     db.close()
 
-def addStory(title,story):
+def addStory(title,story): #adds a new story to database
     data="data.db"
     db=sqlite3.connect(data)
     c=db.cursor()

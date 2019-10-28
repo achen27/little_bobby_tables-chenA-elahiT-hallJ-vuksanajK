@@ -111,10 +111,6 @@ def mystories():
     else:
         return redirect(url_for('root'))
 
-# @app.route("/mystories",methods=['POST'])
-# def tellStory():
-#         return render_template("tale.html",)
-
 @app.route("/otherstories")
 def otherstories():
     #lists user editiable stories on otherstories page
