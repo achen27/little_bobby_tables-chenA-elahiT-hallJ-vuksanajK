@@ -1,4 +1,4 @@
-import sqlite3
+import sqlite3, hashlib
 
 def buildDB(): #builds a database with three tables
     data="data.db"
@@ -38,7 +38,8 @@ def rightLogin(user,givenPass): #searches database to match username and passwor
          '''
     c.execute(command.format(user))
     info=c.fetchone()
-    if not info is None and givenPass==info[0]:
+
+    if not info is None and (hashlib.md5((givenPass.encode('utf-8')))).hexdigest()==info[0]:
         return 1 #correct
     else:
         return 2 #incorrect
@@ -51,7 +52,8 @@ def addUser(user,p): #adds user name and pass into database
     c=db.cursor()
 
     command="INSERT INTO Accounts VALUES(\"{}\",\"{}\")"
-    c.execute( command.format(user,p) )
+
+    c.execute( command.format(user,(hashlib.md5(p.encode('utf-8'))).hexdigest()) )
 
     db.commit()
     db.close()
